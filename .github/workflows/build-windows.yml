@@ -75,6 +75,10 @@ jobs:
             choco install meson --version 1.0.1 -y --ignorepackagecodes;
             choco install ninja --version 1.11.1 -y --ignorepackagecodes;
             refreshenv
+      - name: Inherit amd64 developer environment
+        uses: ilammy/msvc-dev-cmd@v1
+        with:
+          arch: amd64
       - name: Setup build environment
         run: >
             &'C:\Program Files\Meson\meson.exe' build;
