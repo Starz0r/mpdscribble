@@ -7,11 +7,18 @@ jobs:
     defaults:
       run:
         shell: pwsh
+    env:
+        CC: sccache gcc
+        CXX: sccache g++
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
+      - name: Cache compiled artifacts
+        uses: hendrikmuhs/ccache-action@v1
+        with:
+          key: win10-gcc
       - name: Install GCC 10.3
         uses: egor-tensin/setup-mingw@v2
         with:
@@ -21,6 +28,7 @@ jobs:
         run: >
             choco install meson --version 1.0.1 -y --ignorepackagecodes;
             choco install ninja --version 1.11.1 -y --ignorepackagecodes;
+            choco install sccache --version 0.3.3 -y --ignorepackagecodes;
             refreshenv
       - name: Setup build environment
         run: >
