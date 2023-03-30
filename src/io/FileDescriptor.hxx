@@ -6,11 +6,20 @@
 #include <cstddef>
 #include <utility>
 
-#include <unistd.h>
+#ifndef _WIN32
+	#include <unistd.h>
+#endif
 #include <sys/types.h>
 
 #ifdef _WIN32
-#include <wchar.h>
+	#include <io.h>
+	#include <wchar.h>
+	typedef int mode_t;
+	#if defined(_WIN64)
+		typedef __int64 ssize_t; 
+	#else
+		typedef long ssize_t;
+	#endif
 #endif
 
 class UniqueFileDescriptor;
