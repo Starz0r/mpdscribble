@@ -41,6 +41,8 @@ jobs:
     env:
         CC: clang
         CXX: clang++
+        CC_LD: lld-link
+        CXX_LD: lld-link
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
