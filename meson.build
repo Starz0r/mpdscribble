@@ -2,7 +2,7 @@ project('mpdscribble', 'cpp',
   version: '0.25',
   meson_version: '>= 0.47',
   default_options: [
-    'cpp_std=c++2a',
+    'cpp_std=c++20',
     'warning_level=3',
 
     # If we build libmpdclient, it should be linked statically into
