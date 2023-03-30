@@ -2,6 +2,32 @@ name: Windows CI
 on: [push, pull_request]
 
 jobs:
+  win10-gcc:
+    runs-on: windows-2019
+    defaults:
+      run:
+        shell: pwsh
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Install build tools
+        run: >
+            choco install meson --version 1.0.1 -y --ignorepackagecodes;
+            choco install ninja --version 1.11.1 -y --ignorepackagecodes;
+            refreshenv
+      - name: Setup build environment
+        run: >
+            &'C:\Program Files\Meson\meson.exe' build;
+      - name: Compile project
+        run: >
+            cd .\build\;
+            ninja -j4;
+      - uses: actions/upload-artifact@v3
+        with:
+          name: mpdscribble-windows-amd64.exe
+          path: mpdscribble.exe
   win10-clang:
     runs-on: windows-2019
     defaults:
@@ -10,6 +36,35 @@ jobs:
     env:
         CC: clang
         CXX: clang++
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Install build tools
+        run: >
+            choco install meson --version 1.0.1 -y --ignorepackagecodes;
+            choco install ninja --version 1.11.1 -y --ignorepackagecodes;
+            refreshenv
+      - name: Setup build environment
+        run: >
+            &'C:\Program Files\Meson\meson.exe' build;
+      - name: Compile project
+        run: >
+            cd .\build\;
+            ninja -j4;
+      - uses: actions/upload-artifact@v3
+        with:
+          name: mpdscribble-windows-amd64.exe
+          path: mpdscribble.exe
+  win10-msvc:
+    runs-on: windows-2019
+    defaults:
+      run:
+        shell: pwsh
+    env:
+        CC: cl
+        CXX: cl
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
