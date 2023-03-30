@@ -14,7 +14,9 @@
 #ifdef _WIN32
 	#include <io.h>
 	#include <wchar.h>
-	typedef int mode_t;
+	typedef unsigned short mode_t;
+	#define SEEK_SET 0
+	#define SEEK_CUR 1
 	#if defined(_WIN64)
 		typedef __int64 ssize_t; 
 	#else

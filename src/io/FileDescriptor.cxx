@@ -31,7 +31,7 @@
 #ifdef _WIN32
 	#include <io.h>
 	#include <wchar.h>
-	typedef int mode_t;
+	typedef unsigned short mode_t;
 	#if defined(_WIN64)
 		typedef __int64 ssize_t; 
 	#else
