@@ -31,6 +31,8 @@ if not get_option('syslog').disabled()
 endif
 
 common_cppflags = [
+	'-lstdc++',
+	'-static-libstdc++',
 ]
 
 test_global_common_flags = [
