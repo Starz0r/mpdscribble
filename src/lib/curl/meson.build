@@ -27,8 +27,6 @@ curl_options.add_cmake_defines({
   'CURL_USE_WOLFSSL': false,
   'CURL_WINDOWS_SSPI': false,
   'CURL_DISABLE_NTLM': true,
-  'HAVE_LIBZ': false,
-  'USE_ZLIB': false,
   'BUILD_TESTING': false,
 })
 
@@ -43,6 +41,7 @@ curl_proj = cmake.subproject('curl-8.0.1', options: curl_options)
 curl_dep = curl_proj.dependency('libcurl')
 
 wldap32_dep = compiler.find_library('wldap32')
+zlib_dep = dependency('zlib', version: '>= 1.2.13')
 
 curl = static_library(
   'curl',
@@ -54,6 +53,7 @@ curl = static_library(
     curl_dep,
     event_dep,
 	wldap32_dep,
+	zlib_dep,
   ],
 )
 
