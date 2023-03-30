@@ -27,6 +27,8 @@ curl_options.add_cmake_defines({
   'CURL_USE_WOLFSSL': false,
   'CURL_WINDOWS_SSPI': false,
   'CURL_DISABLE_NTLM': true,
+  'HAVE_LIBZ': false,
+  'USE_ZLIB': false,
   'BUILD_TESTING': false,
 })
 
