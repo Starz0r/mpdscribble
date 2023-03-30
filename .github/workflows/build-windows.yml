@@ -24,6 +24,7 @@ jobs:
             refreshenv
       - name: Setup build environment
         run: >
+            &'C:\Program Files\Meson\meson.exe' wrap install zlib;
             &'C:\Program Files\Meson\meson.exe' build;
       - name: Compile project
         run: >
