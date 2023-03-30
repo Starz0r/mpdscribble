@@ -32,7 +32,7 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           name: mpdscribble-windows-amd64.exe
-          path: mpdscribble.exe
+          path: .\mpdscribble.exe
   win10-clang:
     runs-on: windows-2019
     defaults:
