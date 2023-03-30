@@ -38,6 +38,8 @@ endif
 curl_proj = cmake.subproject('curl-8.0.1', options: curl_options)
 curl_dep = curl_proj.dependency('libcurl')
 
+wldap32_dep = compiler.find_library('wldap32')
+
 curl = static_library(
   'curl',
   'Init.cxx',
@@ -47,6 +49,7 @@ curl = static_library(
   dependencies: [
     curl_dep,
     event_dep,
+	wldap32_dep,
   ],
 )
 
