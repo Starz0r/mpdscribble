@@ -23,6 +23,8 @@ curl_options.add_cmake_defines({
   'CURL_DISABLE_CRYPTO_AUTH': true,
   'CURL_DISABLE_ALTSVC': true,
   'CMAKE_USE_LIBSSH2': false,
+  'CURL_USE_LIBSSH2': false,
+  'CURL_USE_WOLFSSL': false,
   'CURL_WINDOWS_SSPI': false,
   'CURL_DISABLE_NTLM': true,
   'BUILD_TESTING': false,
