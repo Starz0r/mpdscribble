@@ -31,8 +31,7 @@ jobs:
             ninja -j4;
       - uses: actions/upload-artifact@v3
         with:
-          name: mpdscribble-windows-amd64.exe
-          path: .\mpdscribble.exe
+          path: .\build\mpdscribble.exe
   win10-clang:
     runs-on: windows-2019
     defaults:
