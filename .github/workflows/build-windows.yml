@@ -10,12 +10,13 @@ jobs:
     env:
         CC: sccache gcc
         CXX: sccache g++
+        SCCACHE_DIR: .\.ccache\
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
-      - name: Cache compiled artifacts
+      - name: Cache compilation artifacts
         uses: hendrikmuhs/ccache-action@v1
         with:
           key: win10-gcc
@@ -29,7 +30,7 @@ jobs:
             choco install meson --version 1.0.1 -y --ignorepackagecodes;
             choco install ninja --version 1.11.1 -y --ignorepackagecodes;
             choco install sccache --version 0.3.3 -y --ignorepackagecodes;
-            refreshenv
+            refreshenv;
       - name: Setup build environment
         run: >
             &'C:\Program Files\Meson\meson.exe' wrap install zlib;
