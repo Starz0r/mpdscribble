@@ -10,16 +10,16 @@ jobs:
     env:
         CC: sccache gcc
         CXX: sccache g++
-        SCCACHE_DIR: D:\a\mpdscribble\mpdscribble\.ccache
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
       - name: Cache compilation artifacts
-        uses: hendrikmuhs/ccache-action@v1
+        uses: hendrikmuhs/ccache-action@v1.2
         with:
           key: win10-gcc
+          variant: sccache
       - name: Install GCC 10.3
         uses: egor-tensin/setup-mingw@v2
         with:
@@ -29,7 +29,6 @@ jobs:
         run: >
             choco install meson --version 1.0.1 -y --ignorepackagecodes;
             choco install ninja --version 1.11.1 -y --ignorepackagecodes;
-            choco install sccache --version 0.3.3 -y --ignorepackagecodes;
             refreshenv;
       - name: Setup build environment
         run: >
