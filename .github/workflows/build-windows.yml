@@ -10,7 +10,7 @@ jobs:
     env:
         CC: sccache gcc
         CXX: sccache g++
-        SCCACHE_DIR: C:\Users\runneradmin\AppData\Roaming\ccache
+        SCCACHE_DIR: D:\a\mpdscribble\mpdscribble\.ccache
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
